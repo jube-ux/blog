@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julien Saindon's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Sixtyfour:BLED,SCAN@8,-3&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="p-1 text-bg-dark backgroundimage2 sticky-top navbar">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+
+            <!-- 1st Navigation bar (menus) -->
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li id="home"><a href="./index.html" class="nav-link px-2 text-secondary sixtyfour-header ">Home</a></li>
+              <li><a href="./Aboutme.html" class="nav-link px-2 text-white sixtyfour-header">About Me</a></li>
+              <li><a href="./MyEducation.html" class="nav-link px-2 text-white sixtyfour-header"> Résumé</a></li>
+              <li><a href="./Menus/NetworkingMenu.html" class="nav-link px-2 text-white sixtyfour-header ">Networking</a></li>
+              <li><a href="./Menus/linuxMenu.html" class="nav-link px-2 text-white sixtyfour-header">Linux</a></li>
+              <li><a href="./Menus/CodingMenu.html" class="nav-link px-2 text-white sixtyfour-header">Coding</a></li>
+              <li><a href="./Menus/cybersecurityMenu.html" class="nav-link px-2 text-white sixtyfour-header">Cybersecurity</a></li>
+              <li><a href="./contactme.html" class="nav-link px-2 text-white sixtyfour-header">Contact me</a></li>
+            </ul>
+             
+            <!-- 2nd Navigation bar (menus) -->
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="padding-left: 600px;">
+              <li id="ai"><a href="./Menus/ai.html" class="nav-link px-2 text-white sixtyfour-header" >AI</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-center mb-3 mb-lg-0 me-lg-3" role="search" style="margin-left:90px ;">
+              <input type="search" class="form-control form-control-dark text-bg-dark" id="searchInput" placeholder="Search posts..." aria-label="Search posts">
+            </form>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="backgroundimage" style="height: 3000px;">
+          <div class="container col-xxl-8 px-4 py-5 my-5">
+            <div class="row card flex-lg-row-reverse align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <img src="./Assets/cybersecurityIconMenu.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" loading="lazy">
+              </div>
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Julien Saindon's Portfolio</h1>
+                <p class="lead text1">This site has been constructed using HTML, CSS and Javascript (with the help of Bootstrap and jQuery) please feel free to look around and browse the latest post to view my projects.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <!-- <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+                  <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+         <div id="latestpost" class="container my-0 py-1">
+          <h1>Latest Posts...</h1>
+            <div id="noResults" class="alert alert-warning d-none" role="alert">No posts match your search.</div>
+           <div class="row py-3" id="postContainer">
+            <div class="col-lg-6 py-3 post-card">
+              <div class="card" style="width:22rem;">
+                <a href="/Posts/SIEMSetUp.html"><img src="/Assets/SEIM/image.jpg" class="card-img-top"></a>
+                <div class="card-body">
+                  <h5 class="card-title">How to deploy a SIEM and install agents</h5>
+                  <p class="card-text">How to monitor and harden your endpoints with Wazuh</p>
+                  <a href="/Posts/SIEMSetUp.html" class="btn btn-primary">SIEM</a>
+                </div>
+              </div>
+            </div>
+              <div class="col-lg-6 py-3 post-card">
+                <div class="card" style="width:22rem;">
+                  <a href="./Posts/IntroToWireshark.html"> <img src="Assets/wireshark post image.png" class= "card-img-top"></a>
+                  <div class="card-body">
+                    <h5 class="card-title">Introduction to Wireshark</h5>
+                    <p class="card-text">First in a series of posts about wading through the dangerous waters of Wireshark.
+                    <br><br>
+                    </p>
+                    <a href="./Posts/IntroToWireshark.html" class="btn btn-primary">Wireshark</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 py-3 post-card">
+              <div class="card" style="width:22rem;">
+                <a href="./Posts/DrumKit.html"> <img src="./Assets/JSDrumKitIcon.png" class="card-img-top"></a>
+                <div class="card-body">
+                  <h5 class="card-title">Drum Kit Project</h5>
+                  <p class="card-text">How to create a clickable web-based drum kit using Javascript</p>
+                  <a href="./Posts/DrumKit.html" class="btn btn-primary">Drum Kit Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 py-3 post-card">
+              <div class="card" style="width:22rem;">
+                <a href="./Posts/nmapIntro.html"><img src="./Assets/nmap/nmap icon.JPG" class="card-img-top" style="height: 220px;"> </a>
+                <div class="card-body">
+                  <h5 class="card-title"> How to get started with NMAP </h5>
+                  <p class="card-text">How to check if vulnerable ports are open to incoming connections<br> 
+                    using this powerful port scanning tool<br>
+                    Enjoy!<br>
+                    <br></p>
+                  <a href="./Posts/nmapIntro.html" class="btn btn-primary">Nmap</a>
+                </div>
+              </div>
+            </div>
+         </div>
+         <div class="row">
+          <div class="col-lg-6 py-3 post-card">
+            <div class="card" style="width: 22rem;">
+              <a href="./Posts/howToConfigureDNS.html"> <img src="./Assets/DNS/openart-image_iCnadbvN_1719941645000_raw.png" class="card-img-top"></a>
+              <div class="card-body">
+                <h5 class="card-title">DNS Configuration</h5>
+                <p class="card-text">Click below how to find out to configure DNS for your website</p>
+                <a href="./Posts/howToConfigureDNS.html" class="btn btn-primary">DNS</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 py-3 post-card">
+            <div class="card" style="width:22rem;">
+              <a href="./Menus/ai.html"><img src="./Assets/AI/openart-image_snBwJyvV_1719974290287_raw.jpg" class="card-img-top"> </a>
+              <div class="card-body">
+                <h5 class="card-title"> AI Menu</h5>
+                <p class="card-text">Navigate to the AI menu for the latest posts about Artificial Intelligence</p>
+                <a href="./Menus/ai.html" class="btn btn-primary">A.I.</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 py-3 post-card">
+            <div class="card" style="width:22rem;">
+              <a href="./Posts/Kali Linux.html"><img src="./Assets/vm kali.PNG" class="card-img-top"></a>  
+              <div class="card-body">
+                <h5 class="card-title">Installing Kali Linux onto my Windows 10</h5>
+                <p class="card-text">Step by step instructions on how to deploy a virtual OS of Kali Linux on your Windows 10.</p>
+                <a href="./Posts/Kali Linux.html" class="btn btn-primary">Kali Linux</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 py-3 post-card">
+            <div class="card" style="width: 22rem;">
+              <img src="../Assets/Burpsuite/Burpsuite logo.png" class="card-img-top" style="height: 240px;">
+              <div class="card-body">
+                <h5 class="card-title">How to modify HTTP headers with Burp Suite</h5>
+                <p class="card-text">This will give you an intro to Burp Suite and show you how to view http headers and 
+                  modify them before sending them out to the server.
+                </p>
+                <a href="../Posts/InterceptingTrafficBurpsuite.html" class="btn btn-primary">Burp Suite</a>
+              </div>
+            </div>
+          </div>
+       </div>
+         </div>
+        </div>
+    </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="./styles.js"></script>
+<script src="./search.js"></script>
+
+<section class="footer">
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-0">
+      <p class="col-md-4 mb-0 text-body-secondary">Julien Saindon's Portfolio</p>
+  
+      <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+  
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="./index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+        <li class="nav-item"><a href="./Aboutme.html" class="nav-link px-2 text-body-secondary">About me</a></li>
+        <li class="nav-item"><a href="./contactme.html" class="nav-link px-2 text-body-secondary">Contact me</a></li>
+      </ul>
+    </footer>
+  </div>
+  
+</section>
+</body>
+
+</html>
