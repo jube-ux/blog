@@ -1,7 +1,7 @@
 
 /* Main page background image */
 .backgroundimage{
-    background-image: url(./Assets/workspace-1280538_1920.jpg);
+    background-image: url(./PentestBlog/background-page\ 1.jpg);
     background-repeat: repeat-y;
     padding-top: 10px;
     margin: 0%;  
@@ -9,7 +9,7 @@
 
     /* Largr screens (includes 4k) */
     @media ((min-width: 2000px) and (max-width: 5000px)){
-        background-image: url(./Assets/backgroundImage4k.jpg);
+        background-image: url(./PentestBlog/background-page\ 1.jpg);
         background-repeat: repeat-y;
         padding-top: 10px;
         margin: 0%;
@@ -17,7 +17,7 @@
     }
      /* Medium screens */
     @media ((min-width: 900px) and (max-width: 1930px)) { 
-        background-image: url(./Assets/workspace-1280538_1920.jpg);
+        background-image: url(./PentestBlog/background-page\ 1.jpg);
         background-repeat: repeat-y;
         padding-top: 10px;
         margin: 0%;
@@ -30,12 +30,12 @@
 /* navbar background image and size control */
 .backgroundimage2{
     @media (max-width: 575.98px){
-        background-image: url(./Assets/clouds-8029036_1920.jpg);
+        background-image: url(./PentestBlog/background-page\ 1.jpg);
         height: 220px;
         margin: 0%;
     }
     @media (min-width: 575.98px){
-        background-image: url(./Assets/clouds-8029036_1920.jpg);
+        background-image: url(./PentestBlog/background-page\ 1.jpg);
         height: 200px;
         margin: 0%;
     }
@@ -147,12 +147,12 @@ ol {
 
 /* Your existing styles */
 .backgroundimage {
-    background: url('./Assets/background-page 1.jpg') no-repeat center center fixed;
+    background: url('./PentestBlog/background-page\ 1.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
 .backgroundimage2 {
-    background: url('./Assets/background-page 1.jpg') no-repeat center center fixed;
+    background: url('./PentestBlog/background-page\ 1.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
