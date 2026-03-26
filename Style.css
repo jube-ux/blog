@@ -1,0 +1,198 @@
+
+/* Main page background image */
+.backgroundimage{
+    background-image: url(./Assets/workspace-1280538_1920.jpg);
+    background-repeat: repeat-y;
+    padding-top: 10px;
+    margin: 0%;  
+    height: auto;
+
+    /* Largr screens (includes 4k) */
+    @media ((min-width: 2000px) and (max-width: 5000px)){
+        background-image: url(./Assets/backgroundImage4k.jpg);
+        background-repeat: repeat-y;
+        padding-top: 10px;
+        margin: 0%;
+        height: auto;
+    }
+     /* Medium screens */
+    @media ((min-width: 900px) and (max-width: 1930px)) { 
+        background-image: url(./Assets/workspace-1280538_1920.jpg);
+        background-repeat: repeat-y;
+        padding-top: 10px;
+        margin: 0%;
+        height: auto;
+        
+    }
+    
+}
+
+/* navbar background image and size control */
+.backgroundimage2{
+    @media (max-width: 575.98px){
+        background-image: url(./Assets/clouds-8029036_1920.jpg);
+        height: 220px;
+        margin: 0%;
+    }
+    @media (min-width: 575.98px){
+        background-image: url(./Assets/clouds-8029036_1920.jpg);
+        height: 200px;
+        margin: 0%;
+    }
+    
+}
+
+/* the below will bring the bullets next to the text */
+ul {
+    text-align: center;
+    list-style-position: inside;
+}
+
+ol {
+    text-align: center;
+    list-style-position: inside;
+}
+
+#paragraphWidth{
+    width: 1500px;
+}
+
+#latestpost{
+    height: 800px;
+    width: 800px;
+    margin-left: 600px;
+    margin-top: 200px;
+}
+
+.footer{
+    background-color: grey;
+}
+
+@media (max-width: 992px){
+#latestpost{
+    margin-left:75px;
+    margin-top: 20px;
+}
+}
+.card{
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.541);
+}
+.text1{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.text2{
+    border-left: thick solid #ff0000;
+    text-align: center;
+    font-size: 40px;
+    color: rgb(82, 158, 67);
+    font-family: 'Times New Roman', Times, serif;
+}
+.heading1{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(45, 47, 119);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Font style for Navbar */
+.sixtyfour-header {
+    @media (max-width: 575.98px) { 
+        font-family: "Sixtyfour", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+        font-variation-settings:
+            "BLED" 20,
+            "SCAN" -40;
+     }
+     @media (min-width: 575.98px){
+        font-family: "Sixtyfour", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 20px;
+        font-variation-settings:
+          "BLED" 20,
+          "SCAN" -20;
+     }
+  }
+
+  /* Add fade-in animation for search results */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Ensure cards are responsive */
+.post-card {
+    transition: opacity 0.3s ease;
+}
+
+/* Optional: Style the no-results message */
+.alert {
+    margin-top: 1rem;
+}
+
+/* Your existing styles */
+.backgroundimage {
+    background: url('./Assets/background-page 1.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.backgroundimage2 {
+    background: url('./Assets/background-page 1.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.sixtyfour-header {
+    font-family: 'Sixtyfour', sans-serif;
+}
+
+.text1 {
+    font-family: 'Blinker', sans-serif;
+}
+
+/* Navbar Visibility and Modernity */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8) !important; /* Semi-transparent dark background for better visibility over images */
+  backdrop-filter: blur(5px); /* Modern blur effect for depth */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for elevation */
+  transition: background-color 0.3s ease; /* Smooth transition on scroll if needed */
+}
+
+.nav-link {
+  color: #fff !important; /* Ensure white text */
+  font-weight: 500; /* Bolder for visibility */
+  transition: color 0.3s ease, transform 0.3s ease; /* Modern hover animation */
+}
+
+.nav-link:hover {
+  color: #0d6efd !important; /* Bootstrap primary blue for contrast on hover */
+  transform: scale(1.05); /* Subtle zoom effect */
+  text-decoration: underline; /* Underline for interactivity */
+}
+
+.navbar-brand {
+  font-family: 'Sixtyfour', sans-serif; /* Match your custom font */
+  font-size: 1.5rem; /* Larger for modernity */
+  color: #fff !important;
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.9); /* Solid background on mobile menu for visibility */
+    padding: 1rem;
+  }
+}
