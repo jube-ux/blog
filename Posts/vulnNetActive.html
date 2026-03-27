@@ -11,27 +11,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Sixtyfour:BLED,SCAN@8,-3&display=swap" rel="stylesheet">
 </head>
     <body>
-        <header class="p-1 text-bg-dark backgroundimage2">
-            <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-                </a>
+        <header class="p-1 text-bg-dark backgroundimage2 sticky-top navbar">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
     
              <!-- 1st Navigation bar (menus) -->
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li id="home"><a href="./index.html" class="nav-link px-2 text-secondary sixtyfour-header ">Home</a></li>
+              <li id="home"><a href="/index.html" class="nav-link px-2 text-secondary sixtyfour-header ">Home</a></li>
               <li><a href="./Walkthrough.html" class="nav-link px-2 text-white sixtyfour-header">Pentests</a></li>
               <li><a href="./knowledgebase.html" class="nav-link px-2 text-white sixtyfour-header">KnowledgeBase</a></li>
               <li><a href="./Theats.html" class="nav-link px-2 text-white sixtyfour-header">Threats</a></li>
               <li><a href="./ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">Blog</a></li>
-              <li><a href="./ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">AboutMe</a></li>
-              <li><a href="./ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">ContactMe</a></li>
+              <li><a href="/Aboutme.html" class="nav-link px-2 text-white sixtyfour-header">AboutMe</a></li>
+              <li><a href="/ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">ContactMe</a></li>
             </ul>
             
-            <form class="col-12 col-lg-center mb-3 mb-lg-0 me-lg-3" role="search">
-              <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-            </form>
+           
           </div>
         </div>
       </header>
@@ -44,7 +42,7 @@
 
                   <h1>Vulnet:Active TryHackMe Walkthrough<h1>
                     <h3>March 26,2026<h3>
-                    <img src="/Assets/PentestBlog/vulnetActive.png" alt="">
+                    <img src="/PentestBlog/vulnetActive.png" alt="">
               </div>
           </div>
         </div>
@@ -85,7 +83,7 @@
                <!-- ****************below is the secoond paragraph ********************-->
               <h1>Recon#1</h1> <br>
                     <h2>RUSTSCAN</h2>
-              <img src="../Assets/PentestBlog/Rustscan Screenshot.jpg">
+              <img src="../PentestBlog/Rustscan Screenshot.jpg">
                     For a scan, I use this command in RustScan. It’s faster and more robust. <br>
                     “sudo rustscan -a tryHackMeLabIPaddress --ulimit 5000”
                     <br><br>PORT     STATE SERVICE     REASON<br>
@@ -126,7 +124,7 @@
                     Something also interesting is that this is saying it allows null sessions or in other words anonymous logins. So, when we connect to this Windows environment, 
                     it will allow us to login using blank username and password.
 
-                    <img src="../Assets/PentestBlog/Enum4Linux.jpg">
+                    <img src="../PentestBlog/Enum4Linux.jpg">
                    
                   Lots of ports open, including: Active Directory Services, DNS, SMB/Netbios.
                   Port 464 is part of Kerberos and handles secure password changes. <br><br>The 5 at the end of “passwd” is for the version number.
@@ -150,7 +148,7 @@
                 And has some recon commands, like INFO, CLIENT LIST, and CONFIG GET *
                 CONFIG GET * will give you the path for a user: C:\\Users\\enterprise-security\\Downloads\\Redis..<bR><br>
                 We have our first username: enterprise-security!!!
-                <img src="../Assets/PentestBlog/Redis user.jpg">
+                <img src="../PentestBlog/Redis user.jpg">
 
          </div>
         
@@ -161,7 +159,7 @@
              <!-- ****************below is the fourth paragraph ********************-->
             <h2>EXPLOIT AND PAYLOAD (1st Flag - Desktop\user.txt)</h2><br>
                 So, with the info we have from our recon, we can access the file system by running the below payload, we can get the user.txt flag.
-                <img src="/Assets/PentestBlog/Redisd user flag.jpg" alt=""><br><br>
+                <img src="../PentestBlog/Redisd user flag.jpg" alt=""><br><br>
                Since this is an Active Directory Environment with SMB services, we can try to use a NTLM relay attack and intercept any NTLM hashes.
                 Using responder, we can intercept any authentication data.
                 Since we can escape the Redis sandbox, we can try send data back to the VPN tunnel that responder is using and intercept this data:<bR>
@@ -175,7 +173,7 @@
              <!-- ****************below is the fourth paragraph ********************-->
             <h2>RESPONDER</h2><br>
                 Here you can see the authentication data that was collected by Responder, this is an NTLMV2 hash, and we can try to crack it with Hashcat
-                <img src="/Assets/PentestBlog/hashcat.jpg" alt=""><br><br>
+                <img src="../PentestBlog/hashcat.jpg" alt=""><br><br>
                 By using Hashcat, we can crack this NTLMv2 hash, and you can see the password at the bottom of the hash.
           </div>
         </div>
@@ -187,7 +185,7 @@
             <h1>SMB</H1>
                 I used smbmap for enumerating the SMB shares with the credentials found with the Redis exploit. See below for the output:<Br>
                 smbmap -H VULNNET -u enterprise-security -p sand_0873959498
-                <img src="/Assets/PentestBlog/SMB Enum.jpg" alt=""><br><br>
+                <img src="../PentestBlog/SMB Enum.jpg" alt=""><br><br>
                 So, it looks like Enterprise-Share has read and write access, so I tried seeing what’s in there. But I had a difficult time connecting to the actual SMB 
                 service by using SMBCLIENT,<br>it would not connect for some reason. <br>I used Netexec with this payload:<br>
                 netexec smb 10.66.141.81 -u enterprise-security -p sand_0873959498 -d VULNNET --shares
@@ -204,15 +202,15 @@
                 <Br><br>The put function has copied an exact copy in you current folder on your Kali machine.
                 Script modifications: ***I also added the IP and the PORT, IMPORTANT*** place the IP of the tunnel or VPN that you are using to connect to 
                 the TryHackMe box. You can ip a, to find the Tun0 IP address.
-                <img src="/Assets/PentestBlog/reverseshellScript.png" alt=""><br><Br>
+                <img src="../PentestBlog/reverseshellScript.png" alt=""><br><Br>
 
                 This what your reverse shell will look like at first. With the command “whoami”, you will see enterprise-security.
-                <img src="/Assets/PentestBlog/reverseShell.jpg" alt=""><bR>
+                <img src="../PentestBlog/reverseShell.jpg" alt=""><bR>
                     But we need to be root to get the 2nd flag. So we need to elevate privileges or access to get the 2nd Flag.
                 To check what privileges this user might have, we can use the command:
                 Whoami /priv
                 And the below will show the privileges of enterprise-security
-                <img src="/Assets/PentestBlog/whoamipriv.jpg" alt=""><br>
+                <img src="../PentestBlog/whoamipriv.jpg" alt=""><br>
 
               The setImpersonatePrivilege is enabled and will help us elevate our privilege. 
 
@@ -224,7 +222,7 @@
               
               Also, we can enumerate some information about the system we are on: systeminfo
               Which gives you the Microsoft version 2019 Windows Server.
-              <img src="/Assets/PentestBlog/SYSTEMINFO.jpg" alt="">
+              <img src="../PentestBlog/SYSTEMINFO.jpg" alt="">
 </div>
 
               <div class="row py-4">
