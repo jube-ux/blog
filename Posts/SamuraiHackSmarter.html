@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samurai Walkthrough</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Sixtyfour:BLED,SCAN@8,-3&display=swap" rel="stylesheet">
+</head>
+    <body>
+        <header class="p-1 text-bg-dark backgroundimage2 sticky-top navbar">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+    
+             <!-- 1st Navigation bar (menus) -->
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li id="home"><a href="/index.html" class="nav-link px-2 text-secondary sixtyfour-header ">Home</a></li>
+              <li><a href="../Menus/walkthroughs.html" class="nav-link px-2 text-white sixtyfour-header">Walkthrough</a></li>
+              <li><a href="./knowledgebase.html" class="nav-link px-2 text-white sixtyfour-header">KnowledgeBase</a></li>
+              <li><a href="./Theats.html" class="nav-link px-2 text-white sixtyfour-header">Threats</a></li>
+              <li><a href="./ContactMe.html" class="nav-link px-2 text-white sixtyfour-header">Blog</a></li>
+              <li><a href="../Aboutme.html" class="nav-link px-2 text-white sixtyfour-header">AboutMe</a></li>
+              <li><a href="../contactme.html" class="nav-link px-2 text-white sixtyfour-header">ContactMe</a></li>
+            </ul>
+            
+           
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="backgroundimage">
+          <div class="container" style="width:fit-content; ">
+            <div class="row mx-5 py-5">
+              <div class="col card">
+
+                  <h1>Samurai: Hacksmarter Walkthrough<h1>
+                    <h3>April 22,2026<h3>
+                    <img src="/PentestBlog/SamuraiIntro.jpg" alt="">
+              </div>
+          </div>
+        </div>
+
+        <div class="container paragrahWidth">
+            <div class="row py-4">
+              <div class="col text1 card">
+
+               <!-- ****************below is the first paragraph ********************-->
+                <h2>Below is a step by step walkthrough of Samurai, taken from Tyler Ramsbey's Hacksmarter Platform. The author is Streetcoder.</h2><br><br>
+                This lab is easy difficulty and includes some web pentesting, OSINT, and code review; but if you stay focused you might just 
+                learn something.<br><br>
+                <ul>
+                      <h1> Setup </h1>
+                    <li> 
+                       For this walkthrough I will use my own Kali Virtual Machine. First start the Samurai machine and wait for it to boot up. Open up a terminal and start an OpenVPN 
+                       connection with the config files they provide. <br>I also changed my Hosts file to set the IP to the hostname: Samurai.com<br><br>
+                    </li>
+                    <li>
+                        Find the below flags:
+                        <br>What is the user flag?
+                        <br>What is the root flag?<br><br>
+                        <img src="../PentestBlog/SamuraiIntro2.jpg"  height="500px" width="800px" alt="">
+
+                   </li>
+                   
+                      <h2>Table of Contents</h2><br>
+                      USER Flag
+                       <li> <a href="#step1">Step 1: Rustscan</a>  </li>
+                      <li> <a href="#step2">Step 2: Directory Enumeration</a>  </li>
+                      <li> <a href="#step3">Step 3: Scanning CMS</a></li>
+                      <li> <a href="#step4">Step 4: Joomla Exploit</a> </li>
+                      <li> <a href="#step5">Step 5: Initial Access</a> </li>
+                      <li> <a href="#step6">Step 6: 2nd Exploit in Joomla: Webshell</a> </li><br>
+                      ROOT Flag
+                       <li> <a href="#step7"> Step 7: find vulnerability for priv escalation</a></li>
+                       <li> <a href="#step8"> Step 8: Find command injection vulnerability</a></li><br>
+                    
+
+                 
+                   <li>
+                        ***Note: Since this was my first try at Hacksmarter, I found the setup for machines extremely easy and better than Tryhackme, so far.
+                  </li>
+                </ul>
+                <br>
+                <a href="https://www.hacksmarter.org/courses/">Click here to navigate to the Samurai room.</a>
+              </div>
+          </div>
+    
+
+          <div class="row py-4">
+            <div class="col text1 card">
+               <!-- ****************below is the secoond paragraph ********************-->
+              <h1 id="step1">Recon#1</h1> <br>
+                    <h2>Step 1: RUSTSCAN</h2>
+              <img src="../PentestBlog/rustscanSamurai.jpg">
+                    For a scan, I use this command in RustScan. It’s faster and more robust. <br>
+                    “sudo rustscan -a ipadressProvided --ulimit 5000”
+                    <br><br>PORT     STATE SERVICE     REASON<br>
+                    22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)<br>
+                    80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
+
+                   <br><br>
+                  Only 2 ports that I see are open, 
+                  and we can investigate later those software versions. <br><br>
+
+                  
+          </div>
+        </div>
+
+        <div class="row py-4">
+            <div class="col text1 card">
+               <!-- ****************below is the 3rd paragraph ********************-->
+                    <h2 id="step2">Step 2:Directory Enumeration</h2><br>
+                    I like to use Go Buster.<br>
+                    Using this command:<br>  gobuster dir --url http://10.1.57.79 --w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-medium.txt -x php,html,js,txt,bak -t 100 -b 200
+                    <br>I like to use Seclist and also I used the -b flag to filter out the Negative Status codes:   200.
+
+
+                    <img src="../PentestBlog/gobusterSamurai.jpg">
+                   
+                      media                (Status: 301) [Size: 308] [--> http://10.1.57.79/media/]<br>
+                      templates            (Status: 301) [Size: 312] [--> http://10.1.57.79/templates/]<br>
+                      modules              (Status: 301) [Size: 310] [--> http://10.1.57.79/modules/]<br>
+                      assets               (Status: 301) [Size: 309] [--> http://10.1.57.79/assets/]<br>
+                      images               (Status: 301) [Size: 309] [--> http://10.1.57.79/images/]<br>
+                      plugins              (Status: 301) [Size: 310] [--> http://10.1.57.79/plugins/]<br>
+                      includes             (Status: 301) [Size: 311] [--> http://10.1.57.79/includes/]<br>
+                      language             (Status: 301) [Size: 311] [--> http://10.1.57.79/language/]<br>
+                      components           (Status: 301) [Size: 313] [--> http://10.1.57.79/components/]<br>
+                      api                  (Status: 301) [Size: 306] [--> http://10.1.57.79/api/]<br>
+                      cache                (Status: 301) [Size: 308] [--> http://10.1.57.79/cache/]<br>
+                      libraries            (Status: 403) [Size: 275]
+                      tmp                  (Status: 301) [Size: 306] [--> http://10.1.57.79/tmp/]<br>
+                      layouts              (Status: 301) [Size: 310] [--> http://10.1.57.79/layouts/]<br>
+                      administrator        (Status: 301) [Size: 316] [--> http://10.1.57.79/administrator/]<br>
+                      cli                  (Status: 301) [Size: 306] [--> http://10.1.57.79/cli/]<br>
+                      server-status        (Status: 403) [Size: 275]<br><br>
+                      I looked through all of these and couldn't find anything interesting, but then<bR>
+                      I logged in the administrator endpoint and saw that the Content Managment System was Joomla.
+
+
+       
+                     
+      
+                  
+          </div>
+        </div>
+    
+        <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the third paragraph ********************-->
+            <h2 id="step3">Step 3: Scanning CMS</h2><br>
+                      So I looked for a scanner for that particular CMS, and found Joomscan.<br><bR>
+                      Joomscan <br>
+                      [+] Detecting Joomla Version<br>
+                      [++] Joomla 4.2.5<br>
+                <img src="../PentestBlog/Redis user.jpg">
+
+         </div>
+        
+        </div>
+
+
+         <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the third paragraph ********************-->
+            <h2 id="step4">Step 4: Joomla Exploit</h2><br>
+                Since I had the Joomla version, I checked in Metasploit for any exploits, but non that were interesting.
+                Checking in ExploitDB I found:<br>
+                Exploit 1: CVE-2023-23752 that provides Unauthenticated information disclosure!<bR>
+                This CVE affected Version: 4.0.0 < 4.2.8 (it means from 4.0.0 up to 4.2.7).<br>
+                I downloaded the Github repo from here.<br>
+                <img src="../PentestBlog/exploitdb.jpg" alt="">
+                <br>Running the ruby script, it will extract the information and output it nicely. <br>
+                <img src="../PentestBlog/Joomla Exploit.jpg" alt="">
+                Looks like a username and password for a database and a local user.<br><br>
+                
+
+         </div>
+        
+        </div>
+    
+        <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the fourth paragraph ********************-->
+            <h2 id="step5">Step 5: Initial Access</h2><br>
+                So, now that we have an initial username and password, we can try it in the administration login page.
+                <img src="../PentestBlog/SamuraiLogin.jpg" alt=""><br><br>
+                And voila!
+                <img src="../PentestBlog/loginsuccessSamurai.jpg" alt="">
+                Now we have access to the admin portal for Joomla (with Super User access), we can modifiy templates and upload extensions.<br>
+                This can be exteremly useful.<br>
+                I found this site, that provides a step by step to go from CVE-2023-23752 to a remote code execution.<br>
+                https://www.vulncheck.com/blog/joomla-for-rce
+                and this site led me a Github page called: https://github.com/p0dalirius/Joomla-webshell-plugin <br>
+                Below are the steps to go from that CVE to a webshell that leads to the user flag.
+
+          </div>
+        </div>
+
+
+        <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the fourth paragraph ********************-->
+            <h2 id="step6">Step 6: 2nd Exploit in Joomla: Webshell</h2><br>
+                For the below exploit I used this reference: https://github.com/p0dalirius/Joomla-webshell-plugin <br>
+                Download the zip file from the Joomla-webshell-plugin repo and save it. <br>
+                Once you are logged in, go to SYSTEM --> EXTENSION --> INSTALL EXTENSION
+                <img src="../PentestBlog/extensionInstallJoomla.jpg" alt="">
+                Find the file you want to upload. Here is where mine was located:<br> /home/kali/Downloads/Joomla-webshell-plugin-master/dist/<br>
+                It's called joomla-webshell-plugin-1.1.0.zip <br><br>
+                After you've uploaded this file, use this payload: <br> sudo python console.py -t http://samurai.com <br>
+                And this will give you a webshell prompt!<br>
+                <img src="../PentestBlog/webshellPrompt.jpg" alt=""><br><br>
+                Type in: ls -al /var/www and you should see the user.txt Flag<br>
+                type in: cat /var/www/user.txt and bingo!<br><br>
+          </div>
+        </div>
+
+         <div class="row py-4">
+          <div class="col text1 card">
+             <!-- ****************below is the fourth paragraph ********************-->
+            <h1>Root Flag</h1><br>
+            <h2 id="step7"> Step 7: Find vulnerability for Privilege Escalation</h2><br>
+                By using "sudo -l" to find any binaries we can use without a password, we can see: <br>
+                <img src="../PentestBlog/sudo-l.jpg" alt="">
+                This points us towards the folder /opt/backup/DbMaria, which is a fork from mySql database system.
+                By using this command :  strings /opt/backup/DbMaria<bR>
+                It will output any human-readable strings that might be of help.
+                <img src="../PentestBlog/strings.jpg" alt=""><br><Br>
+                <h1 id="step8">Step 8: Final payload</h1>
+                  This line: mariadb-dump --socket=/run/mysqld/mysqld.sock -u root %s > /tmp/backup.sql <bR>
+                shows that a command injection is possible since the placeholder %s can be used to inject code.<br>
+                By using this payload: <br>
+                sudo /opt/backup/DbMaria ';id #-- '<br>
+                I can escape with an apostrophe and enter whatever commands I need.<bR>
+                  <img src="../PentestBlog/root1.jpg" alt=""><br>
+                And with this you can cat into the root.txt
+
+                
+
+
+
+          
+        </div>
+    
+            <div class="row py-4">
+            <div class="col text1 card">
+               <!-- ****************the below is for notes********************-->
+                <h1>Notes:</h1>
+                <H2>Final Outcome:</H2>
+                    This was a very challenging lab for a beginer pentester, not sure why it says easy difficult.
+                    I'm not sure how people are finding the exploit for the root flag, because this would involve 
+                    some pretty deep code analysis to figure out this code injection.
+
+            
+            </div>
+            </div>
+    
+    
+     
+    
+        </div>
+            <section class="footer">
+                <div class="container">
+                  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-0">
+                    <p class="col-md-4 mb-0 text-body-secondary">© 2024 Company, Inc</p>
+                
+                    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                    </a>
+                
+                    <ul class="nav col-md-4 justify-content-end">
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+                      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+                    </ul>
+                  </footer>
+                </div>
+              </section>
+         </div>         
+    </section>
+  </body>
+</html>
